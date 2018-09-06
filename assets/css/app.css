@@ -1,0 +1,19 @@
+
+html {
+    font-size: 62.5%;
+}
+* {
+    font-size: 2rem;
+}
+
+
+.btn {
+    font-size: 2rem !important
+}
+.navbar-brand {
+    font-size: 3rem !important
+}
+.question-select {
+    padding: 1rem !important;
+    width: 5.2rem !important;
+}
