@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+  <div class="row">
+    <div class="col-sm">
+      <div class='border'>
+        Pytanie:
+      </div>
+      <div class='border'>
+        Twoje odpowiedzi:
+      </div>
+    </div>
+    <div class="col-7 border">
+      <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value,
+    bingSearchOptions(this), getSubscriptionKey())">
+    </div>
+  </div>
+{% endblock %}

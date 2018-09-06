@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+		<head>
+				<meta charset="UTF-8">
+				<title>{% block title %}Welcome!{% endblock %}</title>
+				<link rel='stylesheet' href="{{ asset('css/app.css') }}">
+				{% block stylesheets %}{% endblock %}
+				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		</head>
+		<body>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class='container'>
+					<a class="navbar-brand" href="#">Navbar</a>
+						<div class="mr-auto">
+							<button class='btn btn-secondary rounded-circle m-1 question-select'>1</button>
+							<button class='btn btn-secondary rounded-circle m-1 question-select'>2</button>
+							<button class='btn btn-secondary rounded-circle m-1 question-select'>3</button>
+							<button class='btn btn-secondary rounded-circle m-1 question-select'>4</button>
+						</div>
+				</div>
+			</nav>
+
+			<div class='container'>
+			  {% include 'flash.html.twig' %}
+				{% block body %}{% endblock %}
+			</div>
+
+			{% block javascripts %}{% endblock %}
+		</body>
 </html>
