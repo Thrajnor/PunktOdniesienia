@@ -12,8 +12,11 @@
       </div>
     </div>
     <div class="col-7 border">
-      <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value,
-    bingSearchOptions(this), getSubscriptionKey())">
+      <form class='search'>
+        <input type='text' name='term'>
+        <input type='submit'>
+      </form>
+      <div class='output'><div>
     </div>
   </div>
 {% endblock %}
