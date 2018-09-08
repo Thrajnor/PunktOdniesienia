@@ -8,7 +8,24 @@
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// var $ = require('jquery');
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
+var $ = require('jquery');
+
+// =========================== unsplash image api
+// ES Modules syntax
+import Unsplash from 'unsplash-js';
+
+const unsplash = new Unsplash({
+  applicationId: "9f52ee6419935d2488a87ee634101b93389613442f65a47ea9c268cdcab289b7",
+  secret: "2597057c816eb6843aef8a492182d1d391f2768a48aa7a454496e45327855476",
+  callbackUrl: "Default callback URL"
+});
+
+
+$('.search').on('submit', function (event) {
+  console.log($('.search').find('input[name="term"]').val())
+
+    
+  return false
+})
