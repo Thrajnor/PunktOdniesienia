@@ -2,21 +2,26 @@
 
 
 {% block body %}
-  <div class="row">
+  <div class="row middle-section">
     <div class="col-sm">
-      <div class='border'>
+      <div class='border rounded p-3'>
         Pytanie:
+        <p></p>
       </div>
-      <div class='border'>
+      <div class='border rounded mt-3 p-3'>
         Twoje odpowiedzi:
       </div>
     </div>
-    <div class="col-7 border">
+    <div class="col-7 border rounded">
       <form class='search'>
-        <input type='text' name='term'>
-        <input type='submit'>
+        <div class="form-group container form-row align-items-center">
+          <div class="input-group col-auto mt-4">
+            <input type='text' name='term' class="form-control form-control-lg search-input" placeholder='Wyszukaj zdjęć z unsplash'>
+            <button type="submit" class="btn btn-primary">Szukaj</button>
+          </div>
+        </div>
       </form>
-      <div class='output'><div>
+      <div class='output row'><div>
     </div>
   </div>
 {% endblock %}

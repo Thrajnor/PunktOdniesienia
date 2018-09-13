@@ -12,8 +12,7 @@ class ResearchController extends AbstractController
      */
     public function research()
     {
-        $this->addFlash('info', 'Some useful info');
-
+        // $this->addFlash('success', 'Some useful info');
         return $this->render('research/index.html.twig');
     }
     /**

@@ -14,7 +14,7 @@ var $ = require('jquery');
 
 // =========================== unsplash image api
 // ES Modules syntax
-import Unsplash from 'unsplash-js';
+import Unsplash, { toJson } from 'unsplash-js';
 
 const unsplash = new Unsplash({
   applicationId: "9f52ee6419935d2488a87ee634101b93389613442f65a47ea9c268cdcab289b7",
@@ -24,8 +24,16 @@ const unsplash = new Unsplash({
 
 
 $('.search').on('submit', function (event) {
-  console.log($('.search').find('input[name="term"]').val())
+  const term = $('.search').find('input[name="term"]').val()
 
-    
+  unsplash.search.photos(term, 1, 15)
+    .then(toJson)
+    .then(json => {
+      $('.output').empty()
+      $.each(json.results, function (i, result) {
+        var regular = result.urls.regular
+        $('.output').append('<span class="col-4 crop"><img class="img-fluid rounded img-thumbnail" src=' + regular + '></span>')
+      })
+    });
   return false
 })
