@@ -22,18 +22,71 @@ const unsplash = new Unsplash({
   callbackUrl: "Default callback URL"
 });
 
+var answers = []
 
-$('.search').on('submit', function (event) {
-  const term = $('.search').find('input[name="term"]').val()
-
+function searchAndShowImages(term) {
   unsplash.search.photos(term, 1, 15)
     .then(toJson)
     .then(json => {
       $('.output').empty()
+      // Display results
       $.each(json.results, function (i, result) {
         var regular = result.urls.regular
-        $('.output').append('<span class="col-4 crop"><img class="img-fluid rounded img-thumbnail" src=' + regular + '></span>')
+
+        // create image
+        if ($.inArray(regular, answers) > -1) {
+          // with clicked class
+          $('.output').append('<span class="col-4 crop"><img class="img-fluid clicked rounded images" src=' + regular + '></span>')
+        } else {
+          // without clicked class
+          $('.output').append('<span class="col-4 crop"><img class="img-fluid rounded images" src=' + regular + '></span>')
+        }
       })
+
+      // add reactivnes to images
+      animateImages($('.images'))
     });
-  return false
-})
+}
+
+function animateImages(image) {
+  image.on('click', function () {
+    // toggle class clicked to each image
+    $(this).toggleClass('clicked')
+    // check if img is already clicked
+    var isClicked = $.inArray(this.src, answers)
+
+    if (isClicked === -1) {
+      // add clicked image to array
+      answers.push(this.src)
+      // render images
+      renderAnswers()
+    } else {
+      // remove form array
+      answers.splice(isClicked, 1);
+      // render answers without image that was clicked
+      renderAnswers()
+    }
+  })
+}
+function renderAnswers() {
+  $('.answers').empty()
+  $.each(answers, function (index, answer) {
+    $('.answers').append('<span class="col-6 crop"><img class="img-fluid clicked rounded answer" src=' + answer + '></span>')
+  })
+  animateImages($('.answer'))
+}
+
+function main() {
+  $('.search').on('submit', function (event) {
+    const term = $('.search').find('input[name="term"]').val()
+
+    // search, show images and add reactivnes to them
+    searchAndShowImages(term)
+
+    return false
+  })
+}
+
+
+
+main()
