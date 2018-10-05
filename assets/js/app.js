@@ -85,6 +85,10 @@ function main() {
 
     return false
   })
+function dateHandler() {
+  var d = new Date()
+  $('.date').empty()
+  $('.date').append(d.getFullYear())
 }
 
 function mainSearchButtonFunctions() {
@@ -92,6 +96,7 @@ function mainSearchButtonFunctions() {
   searchHandler()
 
   // add changing date!
+  dateHandler()
 }
 
 
