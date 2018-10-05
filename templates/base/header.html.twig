@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class='container'>
+        <div class="mr-auto">
+            {% for question in questions %}
+                <button class='btn btn-secondary rounded-circle m-1 question-select'>{{loop.index}}</button>
+            {% endfor %}
+        </div>
+        <input type='submit' class='btn btn-lg btn-primary' value='Wyślij'></input>
+    </div>
+</nav>
