@@ -1,9 +1,15 @@
+/* Main */
 /* defines 1 rem */
 html {
     font-size: 62.5%;
 }
 * {
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
+body {
+    position: relative;
+    min-height: 100vh;
+}
 }
 
 /* nav bar */
