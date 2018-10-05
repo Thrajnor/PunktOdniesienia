@@ -155,3 +155,20 @@ hr.hrFading {
     bottom: 0;
 }
 
+/* moving form */
+
+@media print {
+  .container {
+    width: auto;
+  }
+}
+@media only screen and (max-width: 911px) {
+    .crop img {
+        height: 11rem;
+    }
+}
+@media only screen and (max-width: 767px) and (min-width: ) {
+    .crop img {
+        height: 11rem;
+    }
+}
