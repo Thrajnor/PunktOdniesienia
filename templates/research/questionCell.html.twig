@@ -1,0 +1,13 @@
+<form class='research'>
+    <div class='slides'>
+        {% for question in questions %}
+            <div class="row middle-section flex-sm-wrap flex-lg-nowrap">
+                <div class="col-sm-12 col-lg-5 d-sm-flex d-lg-block p-0 mb-4 mb-lg-0 ml-lg-0 mx-auto flex-wrap flex-md-nowrap flex-lg-wrap">
+                    {% include 'research/question.html.twig' %}
+                    {% include 'research/answers.html.twig' %}
+                </div>
+                {% include 'research/search.html.twig' %}
+            </div>
+        {% endfor %}
+    </div>
+</form>
