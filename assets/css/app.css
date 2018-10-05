@@ -10,6 +10,8 @@ body {
     position: relative;
     min-height: 100vh;
 }
+.body {
+    padding-bottom: 63px
 }
 
 /* nav bar */
@@ -127,3 +129,11 @@ body {
 .prevButton:hover {
   z-index: 1000
 }
+
+/* footer */
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
