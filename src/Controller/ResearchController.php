@@ -20,10 +20,15 @@ class ResearchController extends AbstractController
             'questionText' => 'Jaki obrazek przywodzi Ci na myśl imię Stanisław?',
             'questionName' => 'Stanislaw',
         );
+        $question3 = array(
+            'questionText' => 'Jaki obrazek przywodzi Ci na myśl imię Kunegunda?',
+            'questionName' => 'Kunegunda',
+        );
 
         $questions = array(
             $question1,
             $question2,
+            $question3,
         );
 
 

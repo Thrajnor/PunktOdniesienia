@@ -97,7 +97,42 @@ function searchHandler() {
       return false
     }
   })
+}
+function slideNewQuestionHandler() {
+  $('.question-select').click(function () {
+    var index = $(this)[0].textContent - 1
+    console.log(index * -100 + '%')
+    $('.slidesContainer').animate({
+      left: index * -100 + '%'
+    }, 500)
+    $('.slide').each(function (i) {
 
+      // if (button === i) {
+      //   $(this).animate({
+      //     left: '0',
+      //   }, 500);
+      // } else if (i > button) {
+      //   $(this).animate({
+      //     left: '100%',
+      //   }, 500);
+      // } else {
+      //   $(this).animate({
+      //     left: '-100%',
+      //   }, 500);
+      // }
+      // console.log($(this).offset().left)
+      // console.log($('.slidesContainer').width())
+      // if ($(this).offset().left > $('.slidesContainer').width()) {
+      //   $(this).animate({
+      //     left: '-10%',
+      //   }, 500);
+      // } else {
+      //   $(this).animate({
+      //     left: '-10%',
+      //   }, 500);
+      // }
+    });
+  });
 }
 
 function dateHandler() {
@@ -109,6 +144,9 @@ function dateHandler() {
 function mainSearchButtonFunctions() {
   // give search button life
   searchHandler()
+
+  // give Slides life
+  slideNewQuestionHandler()
 
   // add changing date!
   dateHandler()
