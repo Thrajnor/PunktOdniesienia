@@ -71,6 +71,9 @@ function renderAnswers() {
   $.each(answers, function (index, answer) {
     $('.answers').append('<span class="col-6 crop"><img class="img-fluid clicked rounded answer" src=' + answer + '></span>')
   })
+  for (var i = 0; i < 4 - answers.length; i++) {
+    $('.answers').append('<span class="col-6 crop"><img class="img-fluid rounded" src="http://www.theemailcompany.com/wp-content/uploads/2016/02/no-image-placeholder-big-300x200.jpg"></span>')
+  }
   animateImages($('.answer'))
 }
 
