@@ -130,6 +130,23 @@ body {
   z-index: 1000
 }
 
+/* answers block */
+
+
+.roundedBorder {
+  border-radius: 6px !important;
+}
+
+/* hr */
+
+hr.hrFading {
+    border: 0;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0));
+}
+
 /* footer */
 .footer {
     position: absolute;
