@@ -1,6 +1,5 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'base/base.html.twig' %}
 
 {% block body %}
-  <a href='{{ path('research') }}'>link do badania</a>
+    {% include 'research/questionCell.html.twig' %}
 {% endblock %}
