@@ -30,10 +30,10 @@ function searchAndShowImages(term) {
         // create image
         if ($.inArray(regular, answers) > -1) {
           // with clicked class
-          $('.output').append('<span class="col-4 crop"><img class="img-fluid clicked rounded images" src=' + regular + '></span>')
+          $('.output').append('<span class="col-6 col-md-4 crop"><img class="img-fluid clicked rounded images" src=' + regular + '></span>')
         } else {
           // without clicked class
-          $('.output').append('<span class="col-4 crop"><img class="img-fluid rounded images" src=' + regular + '></span>')
+          $('.output').append('<span class="col-6 col-md-4 crop"><img class="img-fluid rounded images" src=' + regular + '></span>')
         }
       })
 
