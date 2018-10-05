@@ -87,6 +87,12 @@ function main() {
   })
 }
 
+function mainSearchButtonFunctions() {
+  // give search button life
+  searchHandler()
+
+  // add changing date!
+}
 
 
-main()
+mainSearchButtonFunctions()
