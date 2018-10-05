@@ -1,9 +1,3 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
 
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
@@ -76,15 +70,29 @@ function renderAnswers() {
   animateImages($('.answer'))
 }
 
-function main() {
-  $('.search').on('submit', function (event) {
-    const term = $('.search').find('input[name="term"]').val()
+function searchHandler() {
+  $('.search-btn').on('click', function (event) {
+    const term = $('.search').find('input[id="term"]').val()
 
     // search, show images and add reactivnes to them
     searchAndShowImages(term)
 
     return false
   })
+  $('.search').find('input[id="term"]').on('keypress', function (event) {
+    if (event.which == 13) {
+      event.preventDefault()
+      const term = $('.search').find('input[id="term"]').val()
+
+      // search, show images and add reactivnes to them
+      searchAndShowImages(term)
+
+      return false
+    }
+  })
+
+}
+
 function dateHandler() {
   var d = new Date()
   $('.date').empty()
