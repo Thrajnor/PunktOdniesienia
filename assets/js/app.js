@@ -45,16 +45,19 @@ function searchAndShowImages(term) {
 function animateImages(image) {
   image.on('click', function () {
     // toggle class clicked to each image
-    $(this).toggleClass('clicked')
     // check if img is already clicked
     var isClicked = $.inArray(this.src, answers)
 
-    if (isClicked === -1) {
+    if (isClicked === -1 && answers.length < 4) {
+      $(this).toggleClass('clicked')
       // add clicked image to array
       answers.push(this.src)
       // render images
       renderAnswers()
-    } else {
+    } else if (isClicked > -1) {
+      if ($(this).hasClass('clicked')) {
+        $(this).toggleClass('clicked')
+      }
       // remove form array
       answers.splice(isClicked, 1);
       // render answers without image that was clicked
@@ -62,6 +65,7 @@ function animateImages(image) {
     }
   })
 }
+
 function renderAnswers() {
   $('.answers').empty()
   $.each(answers, function (index, answer) {
