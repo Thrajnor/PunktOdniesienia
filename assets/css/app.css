@@ -14,7 +14,8 @@ body {
 
 /* nav bar */
 .btn {
-    font-size: 2rem !important
+    font-size: 2rem !important;
+    color: #fff !important
 }
 .navbar-brand {
     font-size: 3rem !important
@@ -34,7 +35,16 @@ body {
 
 /* style search */
 .search-input {
-    padding: 1.9rem 1rem 1.9rem !important
+    padding: 1.9rem 1rem 1.9rem !important;
+  border-radius: 6px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.search-btn {
+  border-radius: 6px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+
 }
 
 /* style images */
@@ -63,4 +73,57 @@ body {
     -webkit-box-shadow: 0px 0px 0px 3px rgba(66,134,244,1);
     -moz-box-shadow: 0px 0px 0px 3px rgba(66,134,244,1);
     box-shadow: 0px 0px 0px 3px rgba(66,134,244,1);
+}
+
+/* next prev buttons */
+
+.buttonBase {
+  background-color: #006eee;
+
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border-radius: 6px !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+  z-index: 0
+}
+
+.nextButton {
+    border: none !important;
+    position: absolute;
+  border-radius: 6px !important;
+  bottom: 0px !important;
+  margin: 0 !important;
+  left: 100%;
+  width: 50%;
+  transform: translateX(-100%);
+  z-index: 1;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.nextButton:hover {
+  z-index: 1000
+}
+.nextButton:focus {
+  outline: none;
+}
+
+.prevButton {
+    position: relative;
+    border: none !important;
+  border-radius: 6px !important;
+  bottom: 0px !important;
+  margin: 0 !important;
+  left: 0;
+  width: 50%;
+  z-index: 1;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.prevButton:hover {
+  z-index: 1000
 }
