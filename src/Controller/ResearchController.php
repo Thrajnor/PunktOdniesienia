@@ -31,11 +31,15 @@ class ResearchController extends AbstractController
             $question3,
         );
 
+        // slides count
+
+        $slides = count($questions);
+
 
         // $this->addFlash('success', 'Some useful info');
         return $this->render(
             'index.html.twig',
-            array('questions' => $questions)
+            array('questions' => $questions, 'slides' => $slides)
         );
     }
 }
