@@ -17,6 +17,7 @@ const unsplash = new Unsplash({
 });
 
 var allAnswers = {}
+var position = 0
 
 function searchAndShowImages(term, slide, answers) {
   unsplash.search.photos(term, 1, 15)
@@ -105,19 +106,46 @@ function searchHandler() {
   })
 }
 
+function lastPageButtonHandler() {
+  if ($('.question-select').last()[0].textContent - 1 === position && $('html').find('.next')[0].textContent !== 'Wyślij') {
+    $('html').find('.next').first().replaceWith("<button type='submit' class='btn btn-lg btn-primary submitButton submit'><span>Wyślij</span></button>")
+    $('html').find('.next').last().replaceWith("<button type='submit' class='btn btn-primary nextButton'><span>Wyślij</span></button>")
+    slideNewQuestionHandler()
+  } else if ($('html').find('.next')[0].textContent !== 'Następne') {
+    $('html').find('.submit').first().replaceWith("<button type='button' class='btn btn-lg btn-primary submitButton next'><span>Następne</span></button>")
+    slideNewQuestionHandler()
+  } else {
+    return
+  }
+}
+
+function lightUpButton() {
+  $('.question-select').removeClass('selected')
+  $('.question-select').filter(function (index) {
+    return position === index
+  }).addClass('selected')
+}
+
 function slideNewQuestionHandler() {
-  var position = 0
+  $('.next').off('click')
+  $('.prev').off('click')
+  $('.question-select').off('click')
   $('.next').click(function () {
     position += 1
     $('.slidesContainer').animate({
       left: position * -100 + '%'
     }, 500)
+    lastPageButtonHandler()
+    lightUpButton()
   })
+
   $('.prev').click(function () {
     position -= 1
     $('.slidesContainer').animate({
       left: position * -100 + '%'
     }, 500)
+    lastPageButtonHandler()
+    lightUpButton()
   })
 
   $('.question-select').click(function () {
@@ -126,8 +154,8 @@ function slideNewQuestionHandler() {
       left: index * -100 + '%'
     }, 500)
     position = index
-    // if ($('.question-select').last()[0].textContent - 1 === position) {
-    // }
+    lastPageButtonHandler()
+    lightUpButton()
   });
 }
 
@@ -138,14 +166,17 @@ function dateHandler() {
 }
 
 function mainSearchButtonFunctions() {
-  // give search button life
-  searchHandler()
-
   // give Slides life
   slideNewQuestionHandler()
 
+  // give search button life
+  searchHandler()
+
   // add changing date!
   dateHandler()
+
+  // light up first button
+  lightUpButton()
 }
 
 
