@@ -79,9 +79,9 @@ body {
     z-index: 1;
 }
 
-.crop img:hover {
+.images:hover {
     overflow: none;
-    position: relative;
+    position: absolute;
     transform: scale(1.7, 1.7);
     z-index: 1000;
     cursor: pointer;
