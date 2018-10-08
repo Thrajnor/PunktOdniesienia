@@ -179,12 +179,11 @@ hr.hrFading {
 /* Slides #tabs */
 
 .slidesWindow {
-    position: relative;
     margin: 0px;
     padding: 0px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    width: 100vw;
+    height: calc(100vh - 130px);
+    overflow-x: hidden;
 }
 .slidesContainer {
     position: relative;
