@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light paper">
     <div class='container'>
         <div class="mr-auto">
-            {% for slide in slides %}
+            {% for slide in range(0, slides + 1) %}
                 <button class='btn btn-secondary rounded-circle m-1 question-select'>{{loop.index}}</button>
             {% endfor %}
         </div>
-        <input type='submit' class='btn btn-lg btn-primary' value='Wyślij'></input>
+        <input type='submit' class='btn btn-lg btn-primary next' value='Następne'></input>
     </div>
 </nav>
