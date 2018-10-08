@@ -13,13 +13,14 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </head>
     <body {% block documentGet %} {% endblock %}>
+        <form class='research'>
+            {% include 'base/header.html.twig'%}
 
-        {% include 'base/header.html.twig'%}
-
-        <div class='body'>
-            {% include 'flash.html.twig' %}
-            {% block body %}{% endblock %}
-        </div>
+            <div class='body'>
+                {% include 'flash.html.twig' %}
+                {% block body %}{% endblock %}
+            </div>
+        </form>
 
         {% include 'base/footer.html.twig'%}
 
