@@ -1,3 +1,48 @@
-<div class='metric'>
-    <input type="radio">
+<div class='metric container roundedBorder paper position-relative'>
+    <div class='metricPadding'>
+        <h2 class='mb-3'>Prosimy o wypełnienie danych demograficznych:</h2>
+        <small class='muted'>Dane te nie zostaną wykorzystane w innym celu aniżeli na potrzebę badania.</small>
+        <div>
+            <h4 class='mt-4 ml-1'>Wiek:</h4>
+            <div class='ml-3'>
+                <input class='mr-1 radio' type='radio' name='age' value='10-20' id='10-20'>
+                <label for="10-20" class="radioLabel align-middle">10-20 lat</label>
+            </div>
+            <div class='ml-3'>
+                <input class='mr-1 radio' type='radio' name='age' value='21-40' id='21-40'>
+                <label for="21-40" class="radioLabel align-middle">21-40 lat</label>
+            </div>
+            <div class='ml-3'>
+                <input class='mr-1 radio' type='radio' name='age' value='41-60' id='41-60'>
+                <label for="41-60" class="radioLabel align-middle">41-60 lat</label>
+            </div>
+            <div class='ml-3'>
+                <input class='mr-1 radio' type='radio' name='age' value='61-80' id='61-80'>
+                <label for="61-80" class="radioLabel align-middle">61-80 lat</label>
+            </div>
+        </div>
+        <div>
+            <h4 class='mt-4 ml-1'>Płeć:</h4>
+            <div class='ml-3'>
+                <input class='mr-1 radio' type="radio" name='gender' value='Kobieta' id='woman'>
+                <label for="woman" class="radioLabel align-middle">Kobieta</label>
+            </div>
+            <div class='ml-3'>
+                <input class='mr-1 radio' type="radio" name='gender' value='Mężczyzna' id='man'>
+                <label for="man" class="radioLabel align-middle">Mężczyzna</label>
+            </div>
+            <div class='ml-3'>
+                <input class='mr-1 radio' type="radio" name='gender' value='Inna' id='other'>
+                <label for="other" class="radioLabel align-middle">Inna</label>
+            </div>
+        </div>
+    </div>
+    <div class='buttonBase flex-wrap'>
+        <button type="button" class='btn btn-primary prevButton prev'>
+            <span>Wstecz</span>
+        </button>
+        <button type="button" class='btn btn-primary nextButton next'>
+            <span>Dalej</span>
+        </button>
+    </div>
 </div>
