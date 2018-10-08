@@ -2,9 +2,13 @@
     <div class='container'>
         <div class="mr-auto">
             {% for slide in range(0, slides + 1) %}
-                <button class='btn btn-secondary rounded-circle m-1 question-select'>{{loop.index}}</button>
+                <button type='button' class='btn btn-secondary rounded-circle m-1 question-select'>{{loop.index}}</button>
             {% endfor %}
         </div>
-        <input type='submit' class='btn btn-lg btn-primary next' value='Następne'></input>
+        <span>
+            <button type="button" class='btn btn-lg btn-primary submitButton next'>
+                <span>Następne</span>
+            </button>
+        </span>
     </div>
 </nav>
