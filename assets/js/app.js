@@ -107,12 +107,27 @@ function searchHandler() {
 
 function slideNewQuestionHandler() {
   var position = 0
+  $('.next').click(function () {
+    position += 1
+    $('.slidesContainer').animate({
+      left: position * -100 + '%'
+    }, 500)
+  })
+  $('.prev').click(function () {
+    position -= 1
+    $('.slidesContainer').animate({
+      left: position * -100 + '%'
+    }, 500)
+  })
+
   $('.question-select').click(function () {
     var index = $(this)[0].textContent - 1
     $('.slidesContainer').animate({
       left: index * -100 + '%'
     }, 500)
     position = index
+    // if ($('.question-select').last()[0].textContent - 1 === position) {
+    // }
   });
 }
 
