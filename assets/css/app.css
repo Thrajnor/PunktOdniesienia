@@ -53,6 +53,18 @@ body {
 
 }
 
+/* radio */
+
+.radio {
+    height: 13px;
+    width: 13px;
+    margin-bottom: -5px !important;
+}
+.radioLabel{
+    user-select: none;
+}
+
+
 /* style images */
 .crop {
     width: 100%;
