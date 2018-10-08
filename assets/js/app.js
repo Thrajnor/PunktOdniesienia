@@ -16,13 +16,13 @@ const unsplash = new Unsplash({
   callbackUrl: "Default callback URL"
 });
 
-var answers = []
+var allAnswers = {}
 
-function searchAndShowImages(term) {
+function searchAndShowImages(term, slide, answers) {
   unsplash.search.photos(term, 1, 15)
     .then(toJson)
     .then(json => {
-      $('.output').empty()
+      slide.find('div.output').empty()
       // Display results
       $.each(json.results, function (i, result) {
         var regular = result.urls.regular
@@ -30,20 +30,20 @@ function searchAndShowImages(term) {
         // create image
         if ($.inArray(regular, answers) > -1) {
           // with clicked class
-          $('.output').append('<span class="col-6 col-md-4 crop"><img class="img-fluid clicked rounded images" src=' + regular + '></span>')
+          slide.find('div.output').append('<span class="col-6 col-md-4 crop"><img class="img-fluid clicked rounded images" src=' + regular + '></span>')
         } else {
           // without clicked class
-          $('.output').append('<span class="col-6 col-md-4 crop"><img class="img-fluid rounded images" src=' + regular + '></span>')
+          slide.find('div.output').append('<span class="col-6 col-md-4 crop"><img class="img-fluid rounded images" src=' + regular + '></span>')
         }
       })
 
       // add reactivnes to images
-      animateImages($('.images'))
+      animateImages(slide, slide, answers)
     });
 }
 
-function animateImages(image) {
-  image.on('click', function () {
+function animateImages(slide, images, answers) {
+  images.find('img.images').on('click', function () {
     // toggle class clicked to each image
     // check if img is already clicked
     var isClicked = $.inArray(this.src, answers)
@@ -53,7 +53,7 @@ function animateImages(image) {
       // add clicked image to array
       answers.push(this.src)
       // render images
-      renderAnswers()
+      renderAnswers(slide, answers)
     } else if (isClicked > -1) {
       if ($(this).hasClass('clicked')) {
         $(this).toggleClass('clicked')
@@ -61,77 +61,58 @@ function animateImages(image) {
       // remove form array
       answers.splice(isClicked, 1);
       // render answers without image that was clicked
-      renderAnswers()
+      renderAnswers(slide, answers)
     }
   })
 }
 
-function renderAnswers() {
-  $('.answers').empty()
+function renderAnswers(slide, answers) {
+  slide.find('div.answers').empty()
   $.each(answers, function (index, answer) {
-    $('.answers').append('<span class="col-6 crop"><img class="img-fluid clicked rounded answer" src=' + answer + '></span>')
+    slide.find('div.answers').append('<span class="col-6 crop"><img class="img-fluid clicked rounded answer images" src=' + answer + '></span>')
   })
   for (var i = 0; i < 4 - answers.length; i++) {
-    $('.answers').append('<span class="col-6 crop"><img class="img-fluid rounded" src="http://www.theemailcompany.com/wp-content/uploads/2016/02/no-image-placeholder-big-300x200.jpg"></span>')
+    slide.find('div.answers').append('<span class="col-6 crop"><img class="img-fluid roundedBorder" src="http://www.theemailcompany.com/wp-content/uploads/2016/02/no-image-placeholder-big-300x200.jpg"></span>')
   }
-  animateImages($('.answer'))
+  animateImages(slide, slide.find('div.answers'), answers)
 }
 
 function searchHandler() {
-  $('.search-btn').on('click', function (event) {
-    const term = $('.search').find('input[id="term"]').val()
 
-    // search, show images and add reactivnes to them
-    searchAndShowImages(term)
-
-    return false
-  })
-  $('.search').find('input[id="term"]').on('keypress', function (event) {
-    if (event.which == 13) {
-      event.preventDefault()
-      const term = $('.search').find('input[id="term"]').val()
+  $('.slide').on('focusin', function () {
+    var slide = $(this)
+    allAnswers['answers' + slide[0].id] = []
+    var answers = allAnswers['answers' + slide[0].id]
+    slide.find('button.search-btn').on('click', function (event) {
+      const term = slide.find('input[id="term"]').val()
 
       // search, show images and add reactivnes to them
-      searchAndShowImages(term)
+      searchAndShowImages(term, slide, answers)
 
       return false
-    }
+    })
+    slide.find('input[id="term"]').on('keypress', function (event) {
+      if (event.which == 13) {
+        event.preventDefault()
+        const term = slide.find('input[id="term"]').val()
+
+        // search, show images and add reactivnes to them
+        searchAndShowImages(term, slide, answers)
+
+        return false
+      }
+    })
   })
 }
+
 function slideNewQuestionHandler() {
+  var position = 0
   $('.question-select').click(function () {
     var index = $(this)[0].textContent - 1
-    console.log(index * -100 + '%')
     $('.slidesContainer').animate({
       left: index * -100 + '%'
     }, 500)
-    $('.slide').each(function (i) {
-
-      // if (button === i) {
-      //   $(this).animate({
-      //     left: '0',
-      //   }, 500);
-      // } else if (i > button) {
-      //   $(this).animate({
-      //     left: '100%',
-      //   }, 500);
-      // } else {
-      //   $(this).animate({
-      //     left: '-100%',
-      //   }, 500);
-      // }
-      // console.log($(this).offset().left)
-      // console.log($('.slidesContainer').width())
-      // if ($(this).offset().left > $('.slidesContainer').width()) {
-      //   $(this).animate({
-      //     left: '-10%',
-      //   }, 500);
-      // } else {
-      //   $(this).animate({
-      //     left: '-10%',
-      //   }, 500);
-      // }
-    });
+    position = index
   });
 }
 
